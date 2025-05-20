@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Bandeira de Cartão</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+    .container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #0001;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 { text-align: center; color: #333; }
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #444;
+      width: calc(100% - 30px);
+      text-align: left;
+      margin-left: 15px;
+    }
+    input[type="text"] {
+      width: calc(100% - 30px);
+      margin: 0 15px 16px 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      display: block;
+      box-sizing: border-box;
+    }
+    button {
+      margin: 0 auto;
+      display: block;
+      width: 60%;
+      padding: 12px;
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover { background: #125ea8; }
+    .resultado { margin-top: 20px; text-align: center; font-size: 1.1rem; color: #1976d2; }
+    .erro { color: #d32f2f; }
+    .cartao-demo {
+      width: 320px;
+      height: 200px;
+      background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+      border-radius: 18px;
+      box-shadow: 0 4px 16px #0002;
+      margin: 0 auto 8px auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 24px 24px 18px 24px;
+    }
+    .cartao-logo {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      width: 64px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cartao-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .cartao-chip {
+      width: 44px;
+      height: 32px;
+      background: linear-gradient(135deg, #e6e6e6 0%, #bdbdbd 100%);
+      border-radius: 8px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 6px #0001;
+    }
+    .cartao-bandeira-nome {
+      font-size: 1.2rem;
+      color: #1976d2;
+      font-weight: bold;
+      margin-top: 12px;
+      letter-spacing: 1px;
+    }
+    .cartao-numero {
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: #333;
+      background: rgba(255,255,255,0.7);
+      border-radius: 6px;
+      padding: 8px 16px;
+      margin-bottom: 18px;
+      width: 300px;
+      min-height: 28px;
+      font-family: 'Courier New', Courier, monospace;
+      box-shadow: 0 1px 4px #0001;
+    }
+  </style>
+  <script src="/src/funcoes.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Consulta de Bandeira</h2>
+    <form id="consultaForm">
+      <label for="numero">Número do Cartão:</label>
+      <input type="text" id="numero" name="numero" maxlength="16" placeholder="Digite o número do cartão" required />
+    </form>
+    <div id="bandeiraBox" style="display:none; margin-top:20px; text-align:center;">
+      <div id="cartaoDemo" class="cartao-demo">
+        <div class="cartao-logo">
+          <img id="bandeiraLogo" src="" alt="Logo da bandeira" />
+        </div>
+        <div class="cartao-chip"></div>
+        <div class="cartao-bandeira-nome"><span id="bandeiraNome" style="font-size:1.1rem; color:#1976d2;"></span></div>
+        <div class="cartao-numero" id="cartaoNumero">•••• •••• •••• ••••</div>
+      </div>
+    </div>
+    <div id="resultado" class="resultado"></div>
+  </div>
+</body>
+</html>
